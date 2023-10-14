@@ -3,9 +3,6 @@
 // Powering True Leadership
 //===========================
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Excel.Importer.Brokers.Loggings;
 using Excel.Importer.Models.Applicants;
 using Excel.Importer.Models.ExternalApplicants;
@@ -13,6 +10,9 @@ using Excel.Importer.Models.Groups;
 using Excel.Importer.Services.Processings.Applicants;
 using Excel.Importer.Services.Processings.Groups;
 using Excel.Importer.Services.Processings.Spredsheets;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Excel.Importer.Services.Orchestrations
 {

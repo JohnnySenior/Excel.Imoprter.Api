@@ -3,10 +3,10 @@
 // Powering True Leadership
 //===========================
 
-using System;
-using System.Collections.Generic;
 using Bytescout.Spreadsheet;
 using Excel.Importer.Models.ExternalApplicants;
+using System;
+using System.Collections.Generic;
 
 namespace Excel.Importer.Brokers.Spreadsheets
 {

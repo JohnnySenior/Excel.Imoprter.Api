@@ -3,8 +3,8 @@
 // Powering True Leadership
 //===========================
 
-using System.Collections.Generic;
 using Excel.Importer.Models.ExternalApplicants;
+using System.Collections.Generic;
 
 namespace Excel.Importer.Services.Foundations.Spreadsheets
 {
