@@ -42,5 +42,69 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
             this.loggingBrokerMock.VerifyNoOtherCalls();
             this.storageBrokerMock.VerifyNoOtherCalls();
         }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public async Task ShouldThrowValidationExceptionOnAddIfApplicantIsInvalidLogItAsync(
+            string invalidText)
+        {
+            // given
+            var invalidApplicant = new Applicant
+            {
+                FirstName = invalidText
+            };
+
+            var invalidApplicantException = new InvalidApplicantException();
+
+            invalidApplicantException.AddData(
+                key: nameof(Applicant.ApplicantId),
+                values: "Id is required");
+
+            invalidApplicantException.AddData(
+                key: nameof(Applicant.FirstName),
+                values: "Text is required");
+
+            invalidApplicantException.AddData(
+                key: nameof(Applicant.LastName),
+                values: "Text is required");
+
+            invalidApplicantException.AddData(
+                key: nameof(Applicant.Email),
+                values: "Text is required");
+
+            invalidApplicantException.AddData(
+                key: nameof(Applicant.PhoneNumber),
+                values: "Text is required");
+
+            invalidApplicantException.AddData(
+                key: nameof(Applicant.BirthDate),
+                values: "Date is required");
+
+            var expectedApplicantValidationException = 
+                new ApplicantValidationException(invalidApplicantException);
+
+            // when
+            ValueTask<Applicant> addApplicantTask =
+                this.applicantService.AddApplicantAsync(invalidApplicant);
+
+            ApplicantValidationException actualApplicantValidationException =
+                await Assert.ThrowsAsync<ApplicantValidationException>(addApplicantTask.AsTask);
+
+            // then
+            actualApplicantValidationException.Should()
+                .BeEquivalentTo(expectedApplicantValidationException);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogError(It.Is(SameExceptionAs(
+                    actualApplicantValidationException))), Times.Once);
+
+            this.storageBrokerMock.Verify(broker =>
+            broker.InsertApplicantAsync(It.IsAny<Applicant>()), Times.Never);
+
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+            this.storageBrokerMock.VerifyNoOtherCalls();
+        }
     }
 }
