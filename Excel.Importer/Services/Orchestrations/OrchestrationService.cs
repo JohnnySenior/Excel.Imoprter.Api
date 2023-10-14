@@ -5,10 +5,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Excel.Importer.Brokers.Loggings;
+using Excel.Importer.Models.Applicants;
 using Excel.Importer.Models.ExternalApplicants;
+using Excel.Importer.Models.Groups;
+using Excel.Importer.Services.Processings.Applicants;
+using Excel.Importer.Services.Processings.Groups;
 using Excel.Importer.Services.Processings.Spredsheets;
 
 namespace Excel.Importer.Services.Orchestrations
@@ -16,13 +19,19 @@ namespace Excel.Importer.Services.Orchestrations
     public partial class OrchestrationService : IOrchestrationService
     {
         private readonly ISpreadsheetsProcessingService spreadsheetProcessingService;
+        private readonly IApplicantProcessingService applicantProcessingService;
+        private readonly IGroupProcessingService groupProcessingService;
         private readonly ILoggingBroker loggingBroker;
 
         public OrchestrationService(
             ISpreadsheetsProcessingService spreadsheetProcessingService,
+            IApplicantProcessingService applicantProcessingService,
+            IGroupProcessingService groupProcessingService,
             ILoggingBroker loggingBroker)
         {
             this.spreadsheetProcessingService = spreadsheetProcessingService;
+            this.applicantProcessingService = applicantProcessingService;
+            this.groupProcessingService = groupProcessingService;
             this.loggingBroker = loggingBroker;
         }
 
@@ -34,6 +43,7 @@ namespace Excel.Importer.Services.Orchestrations
 
             foreach (var externalApplicant in validExternalApplicants)
             {
+
                 var ensureGroup =
                     await groupProcessingService
                     .EnsureGroupExistsByName(externalApplicant.GroupName);

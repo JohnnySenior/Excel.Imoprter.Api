@@ -13,9 +13,9 @@ namespace Excel.Importer.Brokers.Loggings
         private readonly ILogger<LoggingBroker> logger;
 
         public void LogCritical(Exception exception) =>
-        this.logger.LogCritical(exception.Message, exception);
+            this.logger.LogCritical(exception.Message, exception);
 
         public void LogError(Exception exception) =>
-        this.logger.LogError(exception.Message, exception);
+            this.logger.LogError(exception.Message, exception);
     }
 }

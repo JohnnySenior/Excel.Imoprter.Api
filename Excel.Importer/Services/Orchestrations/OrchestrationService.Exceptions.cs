@@ -4,7 +4,7 @@
 //===========================
 
 using Excel.Importer.Models.Orchestrations.Exceptions;
-using Excel.Importer.Models.SpreadsheetProcessings.Exceptions;
+using Excel.Importer.Models.Spreadsheets.Exceptions;
 using System.Threading.Tasks;
 using Xeptions;
 
