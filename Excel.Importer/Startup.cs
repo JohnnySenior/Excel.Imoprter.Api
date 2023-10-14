@@ -3,6 +3,7 @@
 // Powering True Leadership
 //===========================
 
+using Excel.Importer.Brokers.Spreadsheets;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,7 @@ namespace Excel.Importer
         {
 
             services.AddControllers();
+            services.AddTransient<ISpreadsheetBroker, SpreadsheetBroker>();
 
             var openApiInfo = new OpenApiInfo
             {
