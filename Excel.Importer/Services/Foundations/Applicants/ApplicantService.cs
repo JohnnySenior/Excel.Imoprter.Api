@@ -34,8 +34,7 @@ namespace Excel.Importer.Services.Foundations.Applicants
         {
             ValidateApplicantOnAdd(applicant);
 
-            throw new NotImplementedException();
-            //return await this.storageBroker.InsertApplicantAsync(applicant);
+            return await this.storageBroker.InsertApplicantAsync(applicant);
         });
 
         public ValueTask<Applicant> RetrieveApplicantByIdAsync(Guid applicantid)
