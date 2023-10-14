@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿//===========================
+// Copyright (c) Tarteeb LLC
+// Powering True Leadership
+//===========================
+
 using Excel.Importer.Brokers.Spreadsheets;
-using Excel.Importer.Models.ExternalApplicants;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Excel.Importer.Controllers
