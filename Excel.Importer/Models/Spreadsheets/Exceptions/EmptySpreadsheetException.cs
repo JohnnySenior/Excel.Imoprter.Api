@@ -5,7 +5,7 @@
 
 using Xeptions;
 
-namespace Excel.Importer.Models.SpreadsheetProcessings.Exceptions
+namespace Excel.Importer.Models.Spreadsheets.Exceptions
 {
     public class EmptySpreadsheetException : Xeption
     {

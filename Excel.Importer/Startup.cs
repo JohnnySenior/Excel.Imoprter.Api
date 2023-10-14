@@ -3,7 +3,17 @@
 // Powering True Leadership
 //===========================
 
+using Excel.Importer.Brokers.DateTimes;
+using Excel.Importer.Brokers.Loggings;
 using Excel.Importer.Brokers.Spreadsheets;
+using Excel.Importer.Brokers.Storages;
+using Excel.Importer.Services.Foundations.Applicants;
+using Excel.Importer.Services.Foundations.Groups;
+using Excel.Importer.Services.Foundations.Spreadsheets;
+using Excel.Importer.Services.Orchestrations;
+using Excel.Importer.Services.Processings.Applicants;
+using Excel.Importer.Services.Processings.Groups;
+using Excel.Importer.Services.Processings.Spredsheets;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +34,17 @@ namespace Excel.Importer
         {
 
             services.AddControllers();
+            services.AddTransient<IDateTimeBroker, DateTimeBroker>();
+            services.AddTransient<ILoggingBroker, LoggingBroker>();
+            services.AddTransient<IStorageBroker, StorageBroker>();
             services.AddTransient<ISpreadsheetBroker, SpreadsheetBroker>();
+            services.AddTransient<IApplicantService, ApplicantService>();
+            services.AddTransient<IGroupService, GroupService>();
+            services.AddTransient<ISpreadsheetService, SpreadsheetService>();
+            services.AddTransient<IOrchestrationService, OrchestrationService>();
+            services.AddTransient<IApplicantProcessingService, ApplicantProcessingService>();
+            services.AddTransient<IGroupProcessingService, GroupProcessingService>();
+            services.AddTransient<ISpreadsheetsProcessingService, SpreadsheetsProcessingService>();
 
             var openApiInfo = new OpenApiInfo
             {

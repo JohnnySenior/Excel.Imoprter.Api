@@ -3,8 +3,8 @@
 // Powering True Leadership
 //===========================
 
-using Excel.Importer.Models.ExternalApplicants.Exceptions;
 using Excel.Importer.Models.ExternalApplicants;
+using Excel.Importer.Models.ExternalApplicants.Exceptions;
 using System.Collections.Generic;
 using Xeptions;
 
