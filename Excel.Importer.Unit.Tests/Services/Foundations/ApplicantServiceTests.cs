@@ -10,7 +10,9 @@ using Excel.Importer.Models.Applicants;
 using Excel.Importer.Services.Foundations.Applicants;
 using Moq;
 using System;
+using System.Data.SqlClient;
 using System.Linq.Expressions;
+using System.Runtime.Serialization;
 using Tynamix.ObjectFiller;
 using Xeptions;
 
@@ -53,5 +55,8 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
 
             return filler;
         }
+
+        private static SqlException GetSqlError() =>
+            (SqlException)FormatterServices.GetUninitializedObject(typeof(SqlException));
     }
 }
