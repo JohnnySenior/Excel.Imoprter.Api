@@ -3,9 +3,9 @@
 // Powering True Leadership
 //===========================
 
+using System;
 using Excel.Importer.Models.Applicants;
 using Excel.Importer.Models.Applicants.Exceptions;
-using System;
 
 namespace Excel.Importer.Services.Foundations.Applicants
 {

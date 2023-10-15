@@ -61,17 +61,17 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
             Applicant someApplicant = CreateRandomApplicant();
             var duplicateKeyException = new DuplicateKeyException(someMessage);
 
-            var alreadyExistsApplicantException = 
+            var alreadyExistsApplicantException =
                 new AlreadyExistsApplicantException(duplicateKeyException);
 
-            var expectedApplicantDependencyValidationException = 
+            var expectedApplicantDependencyValidationException =
                 new ApplicantDependencyValidationException(alreadyExistsApplicantException);
 
-            this.storageBrokerMock.Setup(broker => 
+            this.storageBrokerMock.Setup(broker =>
                 broker.InsertApplicantAsync(someApplicant)).ThrowsAsync(duplicateKeyException);
 
             // when
-            ValueTask<Applicant> addApplicantTask = 
+            ValueTask<Applicant> addApplicantTask =
                 this.applicantService.AddApplicantAsync(someApplicant);
 
             var actualApplicantDependencyValidationException =
@@ -82,11 +82,11 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
                 .BeEquivalentTo(expectedApplicantDependencyValidationException);
 
             this.storageBrokerMock.Verify(broker =>
-                broker.InsertApplicantAsync(someApplicant),Times.Once);
+                broker.InsertApplicantAsync(someApplicant), Times.Once);
 
             this.loggingBrokerMock.Verify(broker =>
                 broker.LogError(It.Is(SameExceptionAs(
-                    expectedApplicantDependencyValidationException))),Times.Once);
+                    expectedApplicantDependencyValidationException))), Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();
             this.loggingBrokerMock.VerifyNoOtherCalls();

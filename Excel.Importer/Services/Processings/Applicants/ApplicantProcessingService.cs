@@ -3,10 +3,10 @@
 // Powering True Leadership
 //===========================
 
+using System.Threading.Tasks;
 using Excel.Importer.Brokers.Loggings;
 using Excel.Importer.Models.Applicants;
 using Excel.Importer.Services.Foundations.Applicants;
-using System.Threading.Tasks;
 
 namespace Excel.Importer.Services.Processings.Applicants
 {

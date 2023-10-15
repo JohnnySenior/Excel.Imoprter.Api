@@ -3,11 +3,11 @@
 // Powering True Leadership
 //===========================
 
+using System.Threading.Tasks;
 using Excel.Importer.Models.Applicants;
 using Excel.Importer.Models.Applicants.Exceptions;
 using FluentAssertions;
 using Moq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Excel.Importer.Unit.Tests.Services.Foundations
@@ -20,7 +20,7 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
             // given
             Applicant nullApplicant = null;
             var nullApplicantException = new NullApplicantException();
-            var expectedApplicantValidationException = 
+            var expectedApplicantValidationException =
                 new ApplicantValidationException(nullApplicantException);
 
             // when
@@ -82,7 +82,7 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
                 key: nameof(Applicant.BirthDate),
                 values: "Date is required");
 
-            var expectedApplicantValidationException = 
+            var expectedApplicantValidationException =
                 new ApplicantValidationException(invalidApplicantException);
 
             // when

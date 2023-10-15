@@ -3,8 +3,8 @@
 // Powering True Leadership
 //===========================
 
-using Excel.Importer.Models.Groups;
 using System.Threading.Tasks;
+using Excel.Importer.Models.Groups;
 
 namespace Excel.Importer.Services.Processings.Groups
 {

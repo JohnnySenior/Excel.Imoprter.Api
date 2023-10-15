@@ -3,11 +3,11 @@
 // Powering True Leadership
 //===========================
 
+using System.Linq;
+using System.Threading.Tasks;
 using EFxceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Excel.Importer.Brokers.Storages
 {
@@ -70,6 +70,6 @@ namespace Excel.Importer.Brokers.Storages
             optionsBuilder.UseSqlServer(connectionString);
         }
 
-        public override void Dispose(){ }
+        public override void Dispose() { }
     }
 }

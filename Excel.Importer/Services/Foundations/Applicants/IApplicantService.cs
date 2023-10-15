@@ -3,8 +3,8 @@
 // Powering True Leadership
 //===========================
 
-using Excel.Importer.Models.Applicants;
 using System.Threading.Tasks;
+using Excel.Importer.Models.Applicants;
 
 namespace Excel.Importer.Services.Foundations.Applicants
 {

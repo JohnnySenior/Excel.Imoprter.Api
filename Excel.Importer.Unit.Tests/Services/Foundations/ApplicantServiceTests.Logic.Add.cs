@@ -3,11 +3,11 @@
 // Powering True Leadership
 //===========================
 
+using System.Threading.Tasks;
 using Excel.Importer.Models.Applicants;
 using FluentAssertions;
 using Force.DeepCloner;
 using Moq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Excel.Importer.Unit.Tests.Services.Foundations

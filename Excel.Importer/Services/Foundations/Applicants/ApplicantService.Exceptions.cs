@@ -3,12 +3,12 @@
 // Powering True Leadership
 //===========================
 
-using EFxceptions.Models.Exceptions;
-using Excel.Importer.Models.Applicants;
-using Excel.Importer.Models.Applicants.Exceptions;
 using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using EFxceptions.Models.Exceptions;
+using Excel.Importer.Models.Applicants;
+using Excel.Importer.Models.Applicants.Exceptions;
 using Xeptions;
 
 namespace Excel.Importer.Services.Foundations.Applicants
@@ -44,7 +44,7 @@ namespace Excel.Importer.Services.Foundations.Applicants
 
                 throw CreateAndLogCriticalDependencyException(failedApplicantStorageException);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 var failedApplicantServiceException = new FailedApplicantServiceException(exception);
 

@@ -3,9 +3,9 @@
 // Powering True Leadership
 //===========================
 
-using Excel.Importer.Models.Groups;
 using System.Linq;
 using System.Threading.Tasks;
+using Excel.Importer.Models.Groups;
 
 namespace Excel.Importer.Services.Foundations.Groups
 {
