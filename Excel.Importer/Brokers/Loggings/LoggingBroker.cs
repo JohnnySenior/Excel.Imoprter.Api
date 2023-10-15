@@ -10,7 +10,12 @@ namespace Excel.Importer.Brokers.Loggings
 {
     public class LoggingBroker : ILoggingBroker
     {
-        private readonly ILogger<LoggingBroker> logger;
+        private readonly ILogger<ILoggingBroker> logger;
+
+        public LoggingBroker(ILogger<ILoggingBroker> logger)
+        {
+            this.logger = logger;
+        }
 
         public void LogCritical(Exception exception) =>
             this.logger.LogCritical(exception.Message, exception);
