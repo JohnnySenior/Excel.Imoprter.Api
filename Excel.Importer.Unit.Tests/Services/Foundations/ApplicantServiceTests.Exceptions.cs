@@ -3,6 +3,7 @@
 // Powering True Leadership
 //===========================
 
+using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using EFxceptions.Models.Exceptions;
@@ -86,6 +87,44 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
             this.loggingBrokerMock.Verify(broker =>
                 broker.LogError(It.Is(SameExceptionAs(
                     expectedApplicantDependencyValidationException))),Times.Once);
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+            this.dateTimeBrokerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task ShouldThrowServiceExceptionOnAddIfServiceErrorOccursAndLogItAsync()
+        {
+            //given
+            Applicant someApplicant = CreateRandomApplicant();
+
+            var serviceException = new Exception();
+
+            var failedApplicantServiceException =
+                new FailedApplicantServiceException(serviceException);
+
+            var excpectedApplicantServiceException =
+                new ApplicantServiceException(failedApplicantServiceException);
+
+            this.storageBrokerMock.Setup(broker =>
+            broker.InsertApplicantAsync(someApplicant))
+                .ThrowsAsync(serviceException);
+
+            //when
+            ValueTask<Applicant> addApplicantTask =
+                this.applicantService.AddApplicantAsync(someApplicant);
+
+            //then
+            await Assert.ThrowsAsync<ApplicantServiceException>(() =>
+                addApplicantTask.AsTask());
+
+            this.storageBrokerMock.Verify(broker =>
+                broker.InsertApplicantAsync(someApplicant), Times.Once);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogError(It.Is(SameExceptionAs(
+                    excpectedApplicantServiceException))), Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();
             this.loggingBrokerMock.VerifyNoOtherCalls();
