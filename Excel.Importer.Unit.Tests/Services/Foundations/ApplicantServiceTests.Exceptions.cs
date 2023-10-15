@@ -84,7 +84,7 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
                 broker.InsertApplicantAsync(someApplicant),Times.Once);
 
             this.loggingBrokerMock.Verify(broker =>
-                broker.LogCritical(It.Is(SameExceptionAs(
+                broker.LogError(It.Is(SameExceptionAs(
                     expectedApplicantDependencyValidationException))),Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();

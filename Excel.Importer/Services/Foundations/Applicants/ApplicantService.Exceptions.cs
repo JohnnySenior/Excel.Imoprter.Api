@@ -30,18 +30,16 @@ namespace Excel.Importer.Services.Foundations.Applicants
             {
                 throw CreateAndLogValidationException(invalidApplicantException);
             }
-            //catch (DuplicateKeyException duplicateKeyException)
-            //{
-            //    var alreadyExistsApplicantException =
-            //        new AlreadyExistsApplicantException(duplicateKeyException);
+            catch (DuplicateKeyException duplicateKeyException)
+            {
+                var alreadyExistsApplicantException =
+                    new AlreadyExistsApplicantException(duplicateKeyException);
 
-            //    throw CreateAndALogDependencyValidationException(alreadyExistsApplicantException);
-            //}
+                throw CreateAndALogDependencyValidationException(alreadyExistsApplicantException);
+            }
             catch (SqlException sqlException)
             {
                 var failedApplicantStorageException = new FailedApplicantStorageException(sqlException);
-
-                this.loggingBroker.LogCritical(failedApplicantStorageException);
 
                 throw CreateAndLogCriticalDependencyException(failedApplicantStorageException);
             }
