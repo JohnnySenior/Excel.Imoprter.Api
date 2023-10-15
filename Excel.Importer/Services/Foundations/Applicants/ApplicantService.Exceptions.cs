@@ -5,6 +5,7 @@
 
 using Excel.Importer.Models.Applicants;
 using Excel.Importer.Models.Applicants.Exceptions;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Xeptions;
 
@@ -28,6 +29,12 @@ namespace Excel.Importer.Services.Foundations.Applicants
             {
                 throw CreateAndLogValidationException(invalidApplicantException);
             }
+            catch(SqlException sqlException)
+            {
+                var failedApplicantStorageException = new FailedApplicantStorageException(sqlException);
+
+                throw CreateAndLogCriticalDependencyException(failedApplicantStorageException);
+            }
         }
 
         private ApplicantValidationException CreateAndLogValidationException(Xeption exception)
@@ -38,6 +45,14 @@ namespace Excel.Importer.Services.Foundations.Applicants
             this.loggingBroker.LogError(applicantValidationException);
 
             return applicantValidationException;
+        }
+
+        private ApplicantDependencyException CreateAndLogCriticalDependencyException(Xeption exception)
+        {
+            var applicantDependencyException = new ApplicantDependencyException(exception);
+            this.loggingBroker.LogCritical(applicantDependencyException);
+
+            return applicantDependencyException;
         }
     }
 }
