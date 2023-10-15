@@ -3,9 +3,9 @@
 // Powering True Leadership
 //===========================
 
+using System.Threading.Tasks;
 using Excel.Importer.Models.Applicants;
 using Excel.Importer.Models.Applicants.Exceptions;
-using System.Threading.Tasks;
 using Xeptions;
 
 namespace Excel.Importer.Services.Processings.Applicants

@@ -3,6 +3,9 @@
 // Powering True Leadership
 //===========================
 
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Excel.Importer.Brokers.Loggings;
 using Excel.Importer.Models.Applicants;
 using Excel.Importer.Models.ExternalApplicants;
@@ -10,9 +13,6 @@ using Excel.Importer.Models.Groups;
 using Excel.Importer.Services.Processings.Applicants;
 using Excel.Importer.Services.Processings.Groups;
 using Excel.Importer.Services.Processings.Spredsheets;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Excel.Importer.Services.Orchestrations
 {
@@ -44,11 +44,11 @@ namespace Excel.Importer.Services.Orchestrations
             foreach (var externalApplicant in validExternalApplicants)
             {
 
-                var ensureGroup =
+                Group ensureGroup =
                     await groupProcessingService
                     .EnsureGroupExistsByName(externalApplicant.GroupName);
 
-                var applicant = MapToApplicant(externalApplicant, ensureGroup);
+                Applicant applicant = MapToApplicant(externalApplicant, ensureGroup);
 
                 await applicantProcessingService.AddApplicantAsync(applicant);
             }

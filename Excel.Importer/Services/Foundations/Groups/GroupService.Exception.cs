@@ -3,11 +3,11 @@
 // Powering True Leadership
 //===========================
 
-using Excel.Importer.Models.Groups;
-using Excel.Importer.Models.Groups.Exceptions;
 using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using Excel.Importer.Models.Groups;
+using Excel.Importer.Models.Groups.Exceptions;
 using Xeptions;
 
 namespace Excel.Importer.Services.Foundations.Groups

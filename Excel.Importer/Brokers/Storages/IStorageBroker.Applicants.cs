@@ -3,10 +3,10 @@
 // Powering True Leadership
 //===========================
 
-using Excel.Importer.Models.Applicants;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Excel.Importer.Models.Applicants;
 
 namespace Excel.Importer.Brokers.Storages
 {

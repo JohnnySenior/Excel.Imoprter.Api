@@ -3,8 +3,8 @@
 // Powering True Leadership
 //===========================
 
-using Excel.Importer.Models.ExternalApplicants;
 using System.Collections.Generic;
+using Excel.Importer.Models.ExternalApplicants;
 
 namespace Excel.Importer.Services.Processings.Spredsheets
 {
