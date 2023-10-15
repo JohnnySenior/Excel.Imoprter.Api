@@ -36,7 +36,7 @@ namespace Excel.Importer
             services.AddControllers();
             services.AddTransient<IDateTimeBroker, DateTimeBroker>();
             services.AddTransient<ILoggingBroker, LoggingBroker>();
-            services.AddTransient<IStorageBroker, StorageBroker>();
+            services.AddDbContext<IStorageBroker, StorageBroker>();
             services.AddTransient<ISpreadsheetBroker, SpreadsheetBroker>();
             services.AddTransient<IApplicantService, ApplicantService>();
             services.AddTransient<IGroupService, GroupService>();
