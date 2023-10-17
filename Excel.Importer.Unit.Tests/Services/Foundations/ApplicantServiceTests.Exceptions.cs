@@ -108,8 +108,7 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
                 new ApplicantServiceException(failedApplicantServiceException);
 
             this.storageBrokerMock.Setup(broker =>
-            broker.InsertApplicantAsync(someApplicant))
-                .ThrowsAsync(serviceException);
+                broker.InsertApplicantAsync(someApplicant)).ThrowsAsync(serviceException);
 
             //when
             ValueTask<Applicant> addApplicantTask =
