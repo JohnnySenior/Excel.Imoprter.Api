@@ -44,9 +44,9 @@ namespace Excel.Importer.Unit.Tests.Services.Foundations
         }
 
         [Theory]
+        [InlineData(null)]
         [InlineData("")]
         [InlineData(" ")]
-        [InlineData("  ")]
         public async Task ShouldThrowValidationExceptionOnAddIfApplicantIsInvalidLogItAsync(
             string invalidText)
         {
