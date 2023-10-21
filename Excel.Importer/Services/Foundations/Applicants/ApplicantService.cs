@@ -39,7 +39,7 @@ namespace Excel.Importer.Services.Foundations.Applicants
 
         public ValueTask<Applicant> RetrieveApplicantByIdAsync(Guid applicantid)
         {
-            throw new NotImplementedException();
+            return this.storageBroker.SelectApplicantByIdAsync(applicantid);
         }
 
         public IQueryable RetrieveAllApplicants()
@@ -52,9 +52,11 @@ namespace Excel.Importer.Services.Foundations.Applicants
             throw new NotImplementedException();
         }
 
-        public ValueTask<Applicant> DeleteApplicantAsync(Applicant applicant)
+        public async ValueTask<Applicant> RemoveApplicantAsync(Guid guid)
         {
-            throw new NotImplementedException();
+            var maybeApp = await this.storageBroker.SelectApplicantByIdAsync(guid);
+
+            return await this.storageBroker.DeleteApplicantAsync(maybeApp);
         }
     }
 }
