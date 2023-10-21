@@ -18,8 +18,8 @@ namespace Excel.Importer.Services.Foundations.Applicants
             Validate(
                 (Rule: IsInvalid(applicant.ApplicantId), Parameter: nameof(Applicant.ApplicantId)),
                 (Rule: IsInvalid(applicant.FirstName), Parameter: nameof(Applicant.FirstName)),
-                (Rule: IsInvalid(applicant.LastName), Parameter: nameof(Applicant.LastName)),
-                (Rule: IsInvalid(applicant.Email), Parameter: nameof(Applicant.Email)),
+                (Rule: IsInvalid(applicant.LastName), Parameter: nameof(Applicant.LastName)));
+            (Rule: IsInvalid(applicant.Email), Parameter: nameof(Applicant.Email)),
                 (Rule: IsInvalid(applicant.BirthDate), Parameter: nameof(Applicant.BirthDate)),
                 (Rule: IsInvalid(applicant.PhoneNumber), Parameter: nameof(Applicant.PhoneNumber)));
         }

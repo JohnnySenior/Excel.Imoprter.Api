@@ -31,9 +31,7 @@ namespace Excel.Importer.Services.Processings.Spredsheets
 
             validExternalApplicants.ForEach(externalApplicant =>
             {
-                if (string.IsNullOrWhiteSpace(externalApplicant.FirstName)
-                    || string.IsNullOrWhiteSpace(externalApplicant.PhoneNumber)
-                    || string.IsNullOrWhiteSpace(externalApplicant.Email))
+                if (string.IsNullOrWhiteSpace(externalApplicant.FirstName))
                 {
                     validExternalApplicants.Remove(externalApplicant);
                 }
